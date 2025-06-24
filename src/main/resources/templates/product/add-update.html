@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add or Edit Product</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<form id="formAddOrEditProduct" class="needs-validation" novalidate>
+    <input type="text" id="name" class="form-control" name="name" maxlength="50" minlength="3" required autofocus>
+    <input type="number" id="price" class="form-control" name="price" min="0" step="0.01" required>
+    <button type="button" class="btn btn-success btn-md" onclick="saveOrUpdateBranch()">Save</button>
+</form>
+
+<script>
+    const baseUrl = window.location.origin + "/erp/";
+
+    function saveOrUpdateBranch() {
+        const form = $("#formAddOrEditProduct");
+
+        if (!form[0].checkValidity()) {
+            form[0].reportValidity();
+            return;
+        }
+
+        const data = form.serialize();
+        const url = baseUrl + "product/saveupdate";
+
+        $.post(url, data)
+            .done(function (response) {
+                console.log("Success:", response);
+            })
+            .fail(function (xhr, status, error) {
+                console.error("Error:", error);
+            })
+            .always(function () {
+                console.log("Request completed");
+            });
+    }
+</script>
+</body>
+</html>

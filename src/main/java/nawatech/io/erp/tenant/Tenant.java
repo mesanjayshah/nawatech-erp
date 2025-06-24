@@ -1,0 +1,23 @@
+package nawatech.io.erp.tenant;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Table(name = "tbl_tenant")
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Tenant {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String tenantId;
+
+
+}

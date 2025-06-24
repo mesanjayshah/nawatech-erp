@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Login</title></head>
+<body>
+<h2>Login</h2>
+
+<!-- Error message block -->
+<div th:if="${error}" class="error">
+    <p th:text="${error}"></p>
+</div>
+
+<!-- Success message block -->
+<div th:if="${success}" class="success">
+    <p th:text="${success}"></p>
+</div>
+
+<form th:action="@{/login}" method="post">
+    <input type="email" name="email" placeholder="Email"/><br/>
+    <input type="password" name="password" placeholder="Password"/><br/>
+    <button type="submit">Login</button>
+</form>
+
+<h3>Or Login with Google</h3>
+<a th:href="@{/oauth2/authorization/google}">Login with Google</a><br/>
+
+<p>Don't have an account? <a th:href="@{/register}">Register</a></p>
+</body>
+</html>

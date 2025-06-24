@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="LOG_PATH" value="logs"/>
+    <property name="APP_LOG" value="${LOG_PATH}/app.log"/>
+
+    <!-- Console: all logs including Spring Boot startup -->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- File Appender: only app logs -->
+    <appender name="AppFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${APP_LOG}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/app-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Log only your app classes to file -->
+    <logger name="nawatech.io.erp" level="INFO" additivity="false">
+        <appender-ref ref="AppFile"/>
+    </logger>
+
+    <!-- Root logger logs to console only -->
+    <root level="INFO">
+        <appender-ref ref="Console"/>
+    </root>
+
+</configuration>
