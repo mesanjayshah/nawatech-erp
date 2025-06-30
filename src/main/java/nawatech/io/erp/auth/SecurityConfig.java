@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @EnableMethodSecurity()
 @Configuration
@@ -38,17 +39,29 @@ public class SecurityConfig {
         return builder.build();
     }
 
+    private static final String[] WHITE_LIST_URL = {
+            "/login/**", "/register/**", "/index", "/2fa", "/api/rate-limited",
+            "/verifyEmail/**", "/password-reset/**", "/resend-verification-token",
+            "/forgot-password/**", "/forgot-password-token",
+            "/assets/**", "/vendors/**", "/api/verify"
+    };
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, UserDetailsService userDetailsService) throws Exception {
         log.info("SecurityFilterChain");
         http
+                .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/register", "/login", "/css/**", "/token/verify", "/product/**").permitAll()
+                        .requestMatchers(WHITE_LIST_URL).permitAll()
                         .requestMatchers("/admin/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
+                        .failureHandler((request, response, exception) -> {
+                            request.getSession().setAttribute("error", exception.getMessage());
+                            response.sendRedirect("/erp/login?error");
+                        })
                         .usernameParameter("email")
                         .defaultSuccessUrl("/", true)
                         .permitAll()

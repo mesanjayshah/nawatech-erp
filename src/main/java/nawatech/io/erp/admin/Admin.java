@@ -1,15 +1,17 @@
 package nawatech.io.erp.admin;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 import nawatech.io.erp.tenant.role.Role;
+import nawatech.io.erp.utils.Strings;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "tbl_admin")
 @Getter
 @Setter
 @Builder
@@ -24,7 +26,6 @@ public class Admin {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Transient
     private String username; // not stored, only for UI purpose
 
     private String password;
@@ -45,6 +46,20 @@ public class Admin {
     private Long loginCount;
     private String lastLoginIp;
     private LocalDateTime lastLoginAt;
+    private LocalDateTime lockTime;
+
+    @Column(columnDefinition = "boolean default false")
+    private boolean isEnabled;
+
+    @Column(columnDefinition = "boolean default false")
+    private boolean isDeleted;
+
+    @Column(columnDefinition = "boolean default false")
+    private boolean isBlocked;
+
+    private boolean isAccountNonLocked;
+
+    private int failedAttempt;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

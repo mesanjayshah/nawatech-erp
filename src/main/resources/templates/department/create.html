@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="departmentCreate">
+
+<!-- Department Modal -->
+<div class="modal fade" id="departmentModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Create Department</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <form id="formDepartment" class="needs-validation" novalidate>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="md-form md-outline mt-0">
+                                <input type="text" name="name" autofocus id="departmentName" class="form-control" maxlength="50" required>
+                                <label for="departmentName">Name <span class="mandatory">*</span></label>
+                                <div class="invalid-feedback">Please enter name of the department.</div>
+                            </div>
+
+         <!--                   <div class="md-form md-outline">
+                                <input type="text" minlength="0" maxlength="1440"  name="website" class="form-control " >
+                                <label >Website</label>
+                            </div>
+
+                            <div class="md-form md-outline">
+                                <input type="text" minlength="0" maxlength="255"  name="location" class="form-control " >
+                                <label >Location</label>
+                            </div>
+
+                            <div class="md-form md-outline">
+                                <input type="text" minlength="0" maxlength="500"  name="address" class="form-control " >
+                                <label >Address</label>
+                            </div>
+
+                            <div class="md-form md-outline ">
+                                <textarea type="text" name="remarks" id="createDescription" class="md-textarea form-control"
+                                          rows="3"></textarea>
+                                <label for="createDescription" class="">Description</label>
+                            </div>-->
+
+                            <div class="md-form md-outline ">
+                                <input type="checkbox" checked class="form-check-input"
+                                       id="isEnabled" name="isEnabled">
+                                <label class="form-check-label" for="isEnabled">Status</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer" >
+                    <button type="button" onclick="saveDepartment(this)" class="btn btn-success"><i class="material-icons" >save</i> Save</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal"><i class="material-icons" >close</i> Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function loadDepartmentModal() {
+        resetForm($("#formDepartment"));
+        $("#departmentModal").modal("show");
+    }
+
+    function saveDepartment(instance) {
+        let formInstance = $("#formDepartment");
+        if (!isValidForm(formInstance)) return;
+        showButtonLoader(instance, SAVING);
+        let data = formInstance.serialize();
+        let url = baseUrl + "department/save";
+        $.post(url, data)
+            .done(function(response) {
+                console.log(response);
+                let success = response.success;
+                if (success) {
+                    $("#departmentModal").modal('hide');
+                    $("#formDepartment").trigger('reset');}
+                showAlert(response.message, success, null, null);
+
+            }).fail(function(xhr, status, error) {
+            showAlert(SOMETHING_WENT_WRONG, false);
+        }).always(function() {
+            hideButtonLoader(instance);
+        })
+    }
+</script>
+
+</div>
+</html>

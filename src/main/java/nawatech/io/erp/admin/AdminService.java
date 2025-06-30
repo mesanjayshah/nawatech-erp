@@ -9,7 +9,9 @@ import nawatech.io.erp.admin.email.VerificationTokenRepository;
 import nawatech.io.erp.tenant.role.Permission;
 import nawatech.io.erp.tenant.role.Role;
 import nawatech.io.erp.tenant.role.RoleRepository;
+import nawatech.io.erp.utils.BasicDTO;
 import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,6 +34,15 @@ public class AdminService implements UserDetailsService {
     private final EmailService emailService;
     private final VerificationTokenRepository tokenRepo;
 
+
+    public List<BasicDTO> findAllAdmin() {
+        return adminRepository.findAllAdmin();
+    }
+
+    public Admin findByUsername(String username) {
+        return adminRepository.findByUsername(username);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Admin user = adminRepository.findByEmail(email)
@@ -41,12 +52,34 @@ public class AdminService implements UserDetailsService {
             throw new DisabledException("Please verify your email before logging in.");
         }
 
+        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+
+        // Add roles as authorities (Spring expects roles to be prefixed with ROLE_)
+        user.getRoles().forEach(role -> {
+            authorities.add(new SimpleGrantedAuthority(role.getName())); // e.g. ROLE_USER
+
+            // Add permissions as authorities
+            role.getPermissions().forEach(permission -> {
+                authorities.add(new SimpleGrantedAuthority(permission.getName())); // e.g. product:read
+            });
+        });
+
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
                 user.getPassword(),
                 true, true, true, true,
-                Collections.emptyList()
+                authorities
         );
+    }
+
+    public void updatePasswordForSocialLogin(Admin user, String rawPassword) {
+        if (user.getPassword() == null) {
+            user.setPassword(passwordEncoder.encode(rawPassword));
+            user.setProvider("LOCAL");
+            adminRepository.save(user);
+        } else {
+            throw new IllegalStateException("Password already set");
+        }
     }
 
     public void register(Admin user) {

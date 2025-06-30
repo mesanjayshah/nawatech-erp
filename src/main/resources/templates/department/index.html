@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/admin/admin-layout}" lang="">
+
+<body class="fixed-sn white-skin" th:with="dateUtil=${T(nawatech.io.erp.utils.dateutil.DateUtils)} ">
+<th:block layout:fragment="content">
+    <main>
+        <div class="container-fluid mb-5">
+            <h6 class="my-2 dark-grey-text breadcrumb"><a th:href="@{/dashboard}">Home </a><i
+                    class="bi bi-chevron-right"></i>
+                <a th:href="@{/department}"> Department</a> <span><i class="bi bi-chevron-right"></i>
+            [[${title}]]</span></h6>
+            <div class="card">
+                <div class="card-body">
+                    <div class="custom-list-wrapper">
+                        <div class="row action-row mb-3">
+                            <div class="col-lg mt-3 max-content pr-0">
+                                <a class="btn btn-success" data-toggle="tooltip" title="Create Department"
+                                        onclick="loadDepartmentModal()"> <i class="material-icons">add</i>
+                                </a>
+                                <!-- onclick="authorize('${helper.encrypt('create_department')}', this, loadDepartmentModal)">-->
+                            </div>
+                            <div class="col-lg mt-3">
+                            </div>
+
+                            <div th:insert="~{fragments/commons/custom-search-box.html}"></div>
+                            <div class="col col-lg col-right-buttons mt-3">
+                                <button type="button" class="btn btn-primary mr-2" data-toggle="modal"
+                                        data-target="#filter-modal"><i class="material-icons">filter_alt</i></button>
+                            </div>
+                        </div>
+                        <th:block th:utext="${message}"></th:block>
+                        <div class="custom-list-main">
+                            <div id="department_list" data-trigger-on-ready="1" data-callback="populateDepartments"
+                                 class="custom-list">
+                                <div class="list-head"></div>
+                                <div class="list-body"></div>
+                            </div>
+                        </div>
+
+                        <div th:insert="~{fragments/commons/custom-list-pagination.html}"></div>
+
+                        <!-- Filters -->
+                        <div class="modal fade right" id="filter-modal" tabindex="-1">
+                            <div class="modal-dialog modal-full-height modal-right">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title w-100" id="myModalLabel"><i class="material-icons">filter_alt</i>
+                                            Choose Filter
+                                        </h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Choose the options using which you want to filter the data and click on the Apply
+                                            Filter button.</p>
+                                        <form id="formProgramFilter">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class=" select-outline">
+                                                        <select class="mdb-select md-form md-outline colorful-select dropdown-primary no-search"
+                                                                name="status">
+                                                            <option value="" selected>All</option>
+                                                            <option value="1">Active</option>
+                                                            <option value="0">Inactive</option>
+                                                        </select>
+                                                        <label>Status</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <button type="button" data-role="filter"
+                                                class="btn btn-primary btn-filter mt-3">Apply Filter
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Filters -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+        <div th:replace="department/create :: departmentCreate">...</div>
+<!--    <div th:replace="department/edit :: edit">...</div>-->
+
+</th:block>
+<th:block layout:fragment="script">
+    <script type="text/javascript" th:src="@{/assets/js/custom-list.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/department.js}"></script>
+</th:block>
+</body>
+</html>

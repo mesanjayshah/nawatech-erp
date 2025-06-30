@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="">
+
+    <div th:fragment="branchAddOrEdit">
+
+        <form id="formAddOrEditBranch" class="needs-validation" novalidate>
+        <input type="hidden" name="id" value="">
+
+             <div class="modal fade" id="modalAddOrEditBranch" tabindex="-1" role="dialog"
+             aria-labelledby="modalAddOrEditBranchLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title w-100" id="modalAddOrEditBranchLabel">Add Branch</h5>
+                        <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close">
+                            <span class="fas fa-times fs--1"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-9">
+                                    <label for="name" class="">Name<span class="mandatory">*</span></label>
+                                    <input type="text" id="name" class="form-control" name="name"
+                                           maxlength="50" minlength="3" required autofocus>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="code">Code</label>
+                                    <input type="text" id="code" onchange="checkBranchCodePresent(this)"
+                                           class="form-control" name="code" maxlength="20" minlength="3">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md">
+                                    <label for="website">Website</label>
+                                    <input id="website" type="text" minlength="0" maxlength="255" name="website" class="form-control ">
+                            </div>
+                            <div class="col-md">
+                                <label for="location">Location</label>
+                                <input id="location" type="text" minlength="0" maxlength="255" name="location" class="form-control ">
+                            </div>
+                        </div>
+                        <div class="row">
+                         <!--   <div class="col-md">
+                                <div class="select-outline">
+                                    <select name="staffId"
+                                            class="mdb-select md-form md-outline colorful-select dropdown-success"
+                                            searchable="Search here..">
+                                        <option value="" disabled selected>-&#45;&#45; Select -&#45;&#45;</option>
+                                        <c:forEach var="staffDTO" items="${staffDTOS}">
+                                            <option value="${staffDTO.id}">${staffDTO.staffName}</option>
+                                        </c:forEach>
+                                    </select>
+                                    <label>Manager</label>
+                                </div>
+
+                            </div>-->
+                            <div class="col-md">
+                                    <label for="address" class="">Address</label>
+                                    <input type="text" id="address" class="form-control" name="address" maxlength="255"
+                                           minlength="3">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="md-form md-outline">
+                                    <label for="contactPerson" class="">Contact Person</label>
+                                    <input type="text" id="contactPerson" class="form-control" name="contactName"
+                                           maxlength="50"
+                                           minlength="3">
+                                </div>
+
+                            </div>
+                            <div class="col-md">
+                                <div class="md-form md-outline">
+                                    <label for="contactNumber" class="">Contact Number</label>
+                                    <input type="number" id="contactNumber" class="form-control" name="contactNumber"
+                                           minlength="6" maxlength="10">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md-form md-outline ">
+<!--                            <textarea class="tinymce" name="content" data-tinymce="{}"></textarea>-->
+                            <label for="txtRemarks">Description</label>
+                            <textarea id="txtRemarks" rows="2" name="remarks" class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-check text-left pl-0 mt-3">
+                            <label class="form-check-label" for="activeStatusBranch">Active</label>
+                            <input type="checkbox" class="form-check-input toggleStatus" id="activeStatusBranch" checked>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="saveOrUpdateBranch(this)">Save </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</html>

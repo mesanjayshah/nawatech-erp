@@ -1,0 +1,17 @@
+input.form-control.inputField.required.input-error {
+    border-color: #f00 !important;
+    color: #f00 !important;
+}
+
+.mandatory {
+    color: #F00 !important;
+}
+
+.footer {
+    background-color: #ffffff;
+    height: 3rem !important;
+}
+
+.navbar-vertical .navbar-vertical-footer {
+    height: 3rem !important;
+}

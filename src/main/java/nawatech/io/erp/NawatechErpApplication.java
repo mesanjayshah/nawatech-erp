@@ -1,5 +1,7 @@
 package nawatech.io.erp;
 
+import nawatech.io.erp.admin.Admin;
+import nawatech.io.erp.auditing.AuditAwareImpl;
 import nawatech.io.erp.tenant.role.Permission;
 import nawatech.io.erp.tenant.role.PermissionRepository;
 import nawatech.io.erp.tenant.role.Role;
@@ -7,10 +9,15 @@ import nawatech.io.erp.tenant.role.RoleRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import java.util.Set;
 
 @SpringBootApplication
+@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 public class NawatechErpApplication implements CommandLineRunner {
 
     public NawatechErpApplication(RoleRepository roleRepository, PermissionRepository permissionRepository) {
@@ -22,26 +29,39 @@ public class NawatechErpApplication implements CommandLineRunner {
 		SpringApplication.run(NawatechErpApplication.class, args);
 	}
 
+/*	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(NawatechErpApplication.class);
+	}*/
+
+	@Bean
+	AuditorAware<Admin> auditorProvider() {
+		return new AuditAwareImpl();
+	}
+
 	private final RoleRepository roleRepository;
 	private final PermissionRepository permissionRepository;
 
 	@Override
 	public void run(String... args) {
         // Create permissions
-/*        Permission readPermission = permissionRepository.save(new Permission("READ_DASHBOARD"));
-        Permission writePermission = permissionRepository.save(new Permission("WRITE_USER"));
+/*        Permission readPermission = permissionRepository.save(new Permission("dashboard:read"));
+        Permission writePermission = permissionRepository.save(new Permission("user:write"));
+        Permission readProduct = permissionRepository.save(new Permission("product:read"));
+        Permission createProduct = permissionRepository.save(new Permission("product:create"));
+        Permission updateProduct = permissionRepository.save(new Permission("product:update"));
+        Permission deleteProduct = permissionRepository.save(new Permission("product:delete"));
 
         // Create roles and assign permissions
         Role adminRole = new Role();
         adminRole.setName("ROLE_ADMIN");
-        adminRole.setPermissions(Set.of(readPermission, writePermission));
+        adminRole.setPermissions(Set.of(readPermission, writePermission, readProduct, createProduct, updateProduct, deleteProduct));
         roleRepository.save(adminRole);
 
         Role userRole = new Role();
         userRole.setName("ROLE_USER");
-        userRole.setPermissions(Set.of(readPermission));
+        userRole.setPermissions(Set.of(readPermission, readProduct));
         roleRepository.save(userRole);*/
 	}
-
 
 }

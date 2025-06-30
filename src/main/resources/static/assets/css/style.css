@@ -1,0 +1,22 @@
+.navbar-vertical.navbar-expand-lg~.navbar-top~.content {
+     padding-left: 1.25rem;
+     padding-right: 1.25rem;
+}
+
+.content {
+    padding: calc(var(--phoenix-navbar-top-height)) 1.5rem 6.375rem 1.5rem !important;
+}
+
+.modal-header {
+    /* border-bottom: var(--phoenix-modal-header-border-width) solid var(--phoenix-modal-header-border-color); */
+    border-bottom: none;
+}
+
+.modal-footer {
+    /*border-top: var(--phoenix-modal-footer-border-width) solid var(--phoenix-modal-footer-border-color);*/
+    border-top: none;
+}
+
+.modal-content {
+    border-radius: 0.8rem;
+}

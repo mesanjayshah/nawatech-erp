@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="">
+
+<div th:fragment="branchInfo">
+    <div class="modal fade" id="modalBranchInfo" tabindex="-1" role="dialog" aria-labelledby="modalBranchDetailsLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title w-100" id="modalBranchDetailsLabel">Branch Details</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formBranchInfo" class="disabled">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="md-form md-outline mt-0">
+                                <input type="text" class="form-control" name="name"
+                                       maxlength="50"
+                                       minlength="3" required>
+                                <label class="">Name<span class="mandatory">*</span></label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="md-form md-outline mt-0">
+                                <input type="text" onchange="checkBranchCodePresent(this)"
+                                       class="form-control" name="code" maxlength="20"
+                                       minlength="3">
+                                <label>Code</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="md-form md-outline">
+                                <input type="text" minlength="0" maxlength="1440" name="website" class="form-control ">
+                                <label>Website</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="md-form md-outline">
+                                <input type="text" minlength="0" maxlength="255" name="location" class="form-control ">
+                                <label>Location</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <!--  <div class="col-md">
+                            <div class="select-outline">
+                                <select name="staffId"
+                                        class="mdb-select md-form md-outline colorful-select dropdown-success"
+                                        searchable="Search here..">
+                                    <option value="" disabled selected>-&#45;&#45; Select -&#45;&#45;</option>
+                                    <c:forEach var="staffDTO" items="${staffDTOS}">
+                                        <option value="${staffDTO.id}">${staffDTO.staffName}</option>
+                                    </c:forEach>
+                                </select>
+                                <label>Manager</label>
+                            </div>
+
+                        </div>-->
+                        <div class="col-md">
+                            <div class="md-form md-outline">
+                                <input type="text" class="form-control" name="address" maxlength="255"
+                                       minlength="3">
+                                <label class="">Address</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="md-form md-outline">
+                                <input type="text" class="form-control" name="contactName"
+                                       maxlength="50"
+                                       minlength="3">
+                                <label class="">Contact Person</label>
+                            </div>
+
+                        </div>
+                        <div class="col-md">
+                            <div class="md-form md-outline">
+                                <input type="tel" class="form-control" name="contactNumber"
+                                       maxlength="15"
+                                       minlength="6">
+                                <label class="">Contact Number</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md-form md-outline">
+                        <div class=" font-weight-bold">Description</div>
+                        <textarea type="text" name="remarks" class="md-textarea form-control"
+                                  rows="2"></textarea>
+                    </div>
+
+                    <div class="form-check text-left pl-0 mt-3">
+                        <input type="checkbox" class="form-check-input toggleStatus" id="activeStatusBranchInfo" checked>
+                        <label class="form-check-label" for="activeStatusBranchInfo">Active</label>
+                    </div>
+                    <div class="row mt-0">
+                        <div class="col-3">
+                            <div class="md-form md-outline">
+                                <input type="text" class="form-control" id="createdDate">
+                                <label for="createdDate">Created Date</label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="md-form md-outline">
+                                <input type="text" class="form-control" id="createdBy">
+                                <label for="createdBy">Created By</label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="md-form md-outline">
+                                <input type="text" class="form-control" id="modifiedDate">
+                                <label for="modifiedDate">Modified Date</label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="md-form md-outline">
+                                <input type="text" class="form-control" id="modifiedBy">
+                                <label for="modifiedBy">Modified By</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

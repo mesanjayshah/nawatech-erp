@@ -14,24 +14,24 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class AdminController {
 
-    private final AdminService adminService;
+    private final AdminService userService;
 
-    @PreAuthorize("hasAuthority('READ_DASHBOARD')")
+    @PreAuthorize("hasAuthority('dashboard:read')")
     @GetMapping("/dashboard")
     public String dashboard() {
         return "Admin Dashboard Accessed Successfully!";
     }
 
-    @PreAuthorize("hasAuthority('READ_USER')")
+    @PreAuthorize("hasAuthority('user:read')")
     @GetMapping("/users")
     public ResponseEntity<List<Admin>> getAllUsers() {
-        List<Admin> users = adminService.getUsers();
+        List<Admin> users = userService.getUsers();
         return ResponseEntity.ok(users);
     }
 
-    @PreAuthorize("hasAuthority('READ_AUTH')")
+    @PreAuthorize("hasAuthority('auth:read')")
     @GetMapping("/users/{email}")
     public ResponseEntity<Map<String, Set<String>>> getRolesPermissions(@PathVariable String email) {
-        return ResponseEntity.ok(adminService.getRolesAndPermissionsByEmail(email));
+        return ResponseEntity.ok(userService.getRolesAndPermissionsByEmail(email));
     }
 }

@@ -5,12 +5,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import nawatech.io.erp.admin.Admin;
 import nawatech.io.erp.admin.AdminService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
@@ -19,28 +24,36 @@ public class AuthController {
     private final AdminService userService;
 
     @GetMapping("/")
-    public String home() {
-        return "home";
+    public String home(Model model, Authentication authentication) {
+        String email;
+
+        if (authentication.getPrincipal() instanceof OidcUser oidcUser) {
+            email = oidcUser.getEmail();
+        } else if (authentication.getPrincipal() instanceof UserDetails userDetails) {
+            email = userDetails.getUsername();
+        } else {
+            email = authentication.getName();
+        }
+        model.addAttribute("rolePermission", userService.getRolesAndPermissionsByEmail(email));
+
+        return "home/index";
     }
 
     @GetMapping("/login")
-    public String loginPage(@RequestParam(value = "error", required = false) String error,
-                            @RequestParam(value = "success", required = false) String success,
-                            Model model) {
-
+    public String login(HttpServletRequest request, Model model) {
+        Object error = request.getSession().getAttribute("error");
         if (error != null) {
             model.addAttribute("error", error);
+            request.getSession().removeAttribute("error");
         }
-        if (success != null) {
-            model.addAttribute("success", success);
-        }
-        return "login"; // login.html
+        return "auth/login";
     }
+
 
     @GetMapping("/register")
     public String register(Model model) {
         model.addAttribute("user", new Admin());
-        return "register";
+        return "auth/register";
     }
 
     @PostMapping("/register")
@@ -52,6 +65,31 @@ public class AuthController {
             model.addAttribute("error", "Registration failed: " + ex.getMessage());
         }
         return "redirect:/login";
+    }
+
+
+    @GetMapping("set-password")
+    public String showSetPasswordForm(Model model, @AuthenticationPrincipal OidcUser oidcUser) {
+        model.addAttribute("email", oidcUser.getEmail());
+        return "auth/reset-password";
+    }
+
+    @PostMapping("set-password")
+    public String savePassword(@RequestParam String password,
+                               @AuthenticationPrincipal OidcUser oidcUser,
+                               RedirectAttributes redirectAttributes) {
+
+        String email = oidcUser.getEmail();
+        Admin user = userService.findByEmail(email).orElseThrow();
+
+        if (user.getPassword() == null) {
+            userService.updatePasswordForSocialLogin(user, password);
+            redirectAttributes.addFlashAttribute("message", "Password set successfully.");
+        } else {
+            redirectAttributes.addFlashAttribute("error", "Password already set.");
+        }
+
+        return "redirect:/";
     }
 
     @GetMapping("/error")
@@ -69,6 +107,6 @@ public class AuthController {
                 return "error/500";
             }
         }
-        return "error/generic"; // fallback
+        return "error/generic";
     }
 }

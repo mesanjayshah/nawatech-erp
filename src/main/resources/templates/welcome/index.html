@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/admin/admin-layout}">
+
+<body>
+
+<th:block layout:fragment="content">
+
+    <div class="d-flex flex-center content-min-h">
+        <div class="text-center py-9 mr-3">
+            <img class="img-fluid mb-7 d-dark-none" th:src="@{/assets/img/spot-illustrations/2.png}" width="350" alt="" />
+            <img class="img-fluid mb-7 d-light-none" th:src="@{/assets/img/spot-illustrations/dark_2.png}" width="350" alt="" />
+            <h4 class="text-800 fw-normal mb-5">Create Something Beautiful.</h4>
+            <a class="btn btn-primary" th:href="@{/}">Getting Started</a>
+        </div>
+        <div class="text-center py-9 ml-3">
+            <img class="img-fluid mb-7 d-dark-none" th:src="@{/assets/img/spot-illustrations/2.png}" width="350" alt="" />
+            <img class="img-fluid mb-7 d-light-none" th:src="@{/assets/img/spot-illustrations/dark_2.png}" width="350" alt="" />
+            <h4 class="text-800 fw-normal mb-5">Create Something Beautiful.</h4>
+            <a class="btn btn-primary" th:href="@{/}">Getting Started</a>
+        </div>
+    </div>
+
+</th:block>
+
+<th:block layout:fragment="script">
+</th:block>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<script>
+    const parameterName = "[[${_csrf.parameterName}]]";
+    const token = "[[${_csrf.token}]]";
+
+    //append CSRF token on each form tag
+    $("form").prepend("<input type='hidden' class='restrict-clear' name='" + parameterName + "' value='" + token + "'>");
+
+    //add CSRF token on each ajax request
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': token
+        }
+    });
+</script>

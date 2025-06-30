@@ -2,7 +2,14 @@ server:
   port: 8080
   servlet:
     context-path: /erp
+  compression:
+    enabled: true
 spring:
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          max-age: 3600
   application:
     name: nawatech-erp
   datasource:
@@ -43,6 +50,10 @@ spring:
           starttls:
             enable: true
     default-encoding: UTF-8
+
+  thymeleaf:
+    mode: HTML
+    cache: false
 
 logging:
   level:
