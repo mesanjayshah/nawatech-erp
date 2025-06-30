@@ -4,7 +4,7 @@
     <div class="select-outline">
         <select id="selectLimit" data-role="limit"
                 class="mdb-select md-form md-outline colorful-select dropdown-primary no-search">
-            <th:block  th:each="limit:${T(nawatech.io.erp.utils.ArraysUtil).LIMITS}">
+            <th:block  th:each="limit:${T(io.nawatech.erp.utils.ArraysUtil).LIMITS}">
                 <option th:value="${limit}">[[${limit}]]</option>
             </th:block>
 

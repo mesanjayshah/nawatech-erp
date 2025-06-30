@@ -6,7 +6,7 @@ plugins {
 	id 'org.graalvm.buildtools.native' version '0.10.6'
 }
 
-group = 'nawatech.io'
+group = 'io.nawatech'
 version = '0.0.1-SNAPSHOT'
 
 java {

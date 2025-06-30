@@ -24,7 +24,7 @@
     </appender>
 
     <!-- Log only your app classes to file -->
-    <logger name="nawatech.io.erp" level="INFO" additivity="false">
+    <logger name="io.nawatech.erp" level="INFO" additivity="false">
         <appender-ref ref="AppFile"/>
     </logger>
 
