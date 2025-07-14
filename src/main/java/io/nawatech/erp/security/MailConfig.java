@@ -1,4 +1,4 @@
-package io.nawatech.erp.auth;
+package io.nawatech.erp.security;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +25,7 @@ public class MailConfig {
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
-        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.security", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.debug", "false");
 

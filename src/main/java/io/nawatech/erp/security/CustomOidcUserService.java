@@ -1,10 +1,9 @@
-package io.nawatech.erp.auth;
+package io.nawatech.erp.security;
 
 import io.nawatech.erp.logs.AuditEventType;
 import io.nawatech.erp.logs.AuditLog;
 import io.nawatech.erp.logs.AuditLogService;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import io.nawatech.erp.admin.Admin;
 import io.nawatech.erp.admin.AdminRepository;

@@ -2,16 +2,17 @@ package io.nawatech.erp.logs.audit;
 
 import org.springframework.context.ApplicationEvent;
 import java.util.List;
+import java.util.Set;
 
 public class AuditLogEvent extends ApplicationEvent {
-    private final List<AuditLogDetailInfo> logs;
+    private final Set<AuditLogDetailInfo> logs;
 
-    public AuditLogEvent(Object source, List<AuditLogDetailInfo> logs) {
+    public AuditLogEvent(Object source, Set<AuditLogDetailInfo> logs) {
         super(source);
         this.logs = logs;
     }
 
-    public List<AuditLogDetailInfo> getLogs() {
+    public Set<AuditLogDetailInfo> getLogs() {
         return logs;
     }
 }

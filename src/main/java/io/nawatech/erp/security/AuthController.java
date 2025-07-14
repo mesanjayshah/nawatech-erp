@@ -1,4 +1,4 @@
-package io.nawatech.erp.auth;
+package io.nawatech.erp.security;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;

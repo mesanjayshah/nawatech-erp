@@ -11,8 +11,7 @@ public abstract class AuditableEntity {
     @Transient
     private Map<String, Object> originalState = new HashMap<>();
 
-    @PrePersist
-    @PreUpdate
+    @PostLoad
     public void captureOriginalStateIfMissing() {
         if (originalState == null || originalState.isEmpty()) {
             originalState = AuditUtil.captureOriginalState(this);
@@ -23,4 +22,3 @@ public abstract class AuditableEntity {
         return originalState != null ? originalState : Map.of();
     }
 }
-

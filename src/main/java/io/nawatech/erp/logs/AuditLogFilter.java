@@ -21,6 +21,17 @@ public class AuditLogFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
+        String uri = request.getRequestURI();
+
+        // ✅ Skip audit logging for static resources, but still proceed with the filter chain
+        if (uri.matches(".*\\.(css|js|ico|png|jpg|svg|woff2?)$") ||
+                uri.startsWith("/erp/assets/") ||
+                uri.startsWith("/erp/vendors/") ||
+                uri.equals("/favicon.ico")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         long start = System.currentTimeMillis();
         String principal = request.getUserPrincipal() != null ? request.getUserPrincipal().getName() : "anonymous";
 

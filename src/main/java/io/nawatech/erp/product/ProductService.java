@@ -38,7 +38,6 @@ public class ProductService {
             product.setEnabled(productInput.isEnabled());
             product.setDeleted(productInput.isDeleted());
         }
-        entityManager.flush();
 
 /*        if (auditProperties.isBusinessEventsEnabled()) {
             AuditLog log = new AuditLog();

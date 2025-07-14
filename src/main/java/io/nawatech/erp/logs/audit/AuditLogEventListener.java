@@ -17,6 +17,8 @@ public class AuditLogEventListener {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     public void handleAuditLogEvent(AuditLogEvent event) {
+
+
         System.out.println("🔍 Is transaction active? " + TransactionSynchronizationManager.isActualTransactionActive());
         var logs = event.getLogs();
         if (!logs.isEmpty()) {

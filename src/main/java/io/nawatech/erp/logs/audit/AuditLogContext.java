@@ -1,20 +1,24 @@
 package io.nawatech.erp.logs.audit;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class AuditLogContext {
 
-    private static final ThreadLocal<List<AuditLogDetailInfo>> context = ThreadLocal.withInitial(ArrayList::new);
+    private static final ThreadLocal<Set<AuditLogDetailInfo>> context = ThreadLocal.withInitial(HashSet::new);
 
     public static void add(AuditLogDetailInfo header) {
-        System.out.println("✅ Adding audit log: " + header.getEntityName() + " ID=" + header.getEntityId());
-        context.get().add(header);
+        boolean added = context.get().add(header);
+        if (added) {
+            System.out.println("✅ Audit log added: " + header.getEntityName() + " ID=" + header.getEntityId());
+        } else {
+            System.out.println("⚠️ Duplicate audit log ignored: " + header.getEntityName() + " ID=" + header.getEntityId());
+        }
     }
 
-    public static List<AuditLogDetailInfo> getAndClear() {
-        var list = context.get();
+    public static Set<AuditLogDetailInfo> getAndClear() {
+        Set<AuditLogDetailInfo> logs = context.get();
         context.remove();
-        return list;
+        return logs;
     }
 }
