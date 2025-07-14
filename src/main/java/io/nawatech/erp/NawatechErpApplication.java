@@ -29,11 +29,6 @@ public class NawatechErpApplication implements CommandLineRunner {
 		SpringApplication.run(NawatechErpApplication.class, args);
 	}
 
-/*	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(NawatechErpApplication.class);
-	}*/
-
 	@Bean
 	AuditorAware<Admin> auditorProvider() {
 		return new AuditAwareImpl();
@@ -44,24 +39,25 @@ public class NawatechErpApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-        // Create permissions
-/*        Permission readPermission = permissionRepository.save(new Permission("dashboard:read"));
-        Permission writePermission = permissionRepository.save(new Permission("user:write"));
-        Permission readProduct = permissionRepository.save(new Permission("product:read"));
-        Permission createProduct = permissionRepository.save(new Permission("product:create"));
-        Permission updateProduct = permissionRepository.save(new Permission("product:update"));
-        Permission deleteProduct = permissionRepository.save(new Permission("product:delete"));
+        if (permissionRepository.count() == 0 && roleRepository.count() == 0) {
+            Permission readPermission = permissionRepository.save(new Permission("dashboard:read"));
+            Permission writePermission = permissionRepository.save(new Permission("user:write"));
+            Permission readProduct = permissionRepository.save(new Permission("product:read"));
+            Permission createProduct = permissionRepository.save(new Permission("product:create"));
+            Permission updateProduct = permissionRepository.save(new Permission("product:update"));
+            Permission deleteProduct = permissionRepository.save(new Permission("product:delete"));
 
-        // Create roles and assign permissions
-        Role adminRole = new Role();
-        adminRole.setName("ROLE_ADMIN");
-        adminRole.setPermissions(Set.of(readPermission, writePermission, readProduct, createProduct, updateProduct, deleteProduct));
-        roleRepository.save(adminRole);
+            // Create roles and assign permissions
+            Role adminRole = new Role();
+            adminRole.setName("ROLE_ADMIN");
+            adminRole.setPermissions(Set.of(readPermission, writePermission, readProduct, createProduct, updateProduct, deleteProduct));
+            roleRepository.save(adminRole);
 
-        Role userRole = new Role();
-        userRole.setName("ROLE_USER");
-        userRole.setPermissions(Set.of(readPermission, readProduct));
-        roleRepository.save(userRole);*/
+            Role userRole = new Role();
+            userRole.setName("ROLE_USER");
+            userRole.setPermissions(Set.of(readPermission, readProduct));
+            roleRepository.save(userRole);
+        }
 	}
 
 }
