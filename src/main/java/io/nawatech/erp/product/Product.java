@@ -1,15 +1,14 @@
 package io.nawatech.erp.product;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import io.nawatech.erp.logs.audit.AuditingEntityListener;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@EntityListeners(AuditingEntityListener.class)
 public class Product {
 
     @Id
@@ -17,11 +16,7 @@ public class Product {
     private Long id;
 
     private String name;
-
     private Double price;
-
     private boolean enabled = true;
-
     private boolean deleted = false;
-
 }

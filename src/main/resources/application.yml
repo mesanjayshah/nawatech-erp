@@ -55,6 +55,6 @@ spring:
     mode: HTML
     cache: false
 
-logging:
-  level:
-    org.springframework.security: DEBUG
+#logging:
+#  level:
+#    org.springframework.security: DEBUG
