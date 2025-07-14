@@ -17,9 +17,8 @@ public class AuditingEntityListener {
 
     @PreUpdate
     public void onUpdate(Object entity) {
-        if (!(entity instanceof Product)) return;
+        if (!(entity instanceof AuditableEntity auditable)) return;
 
-        var auditable = (AuditableEntity) entity;
         Map<String, Object> original = auditable.getOriginalState();
         List<AuditLogDetail> changes = new ArrayList<>();
 
@@ -35,13 +34,15 @@ public class AuditingEntityListener {
                     detail.setNewValue(String.valueOf(newVal));
                     changes.add(detail);
                 }
-            } catch (IllegalAccessException ignored) {}
+            } catch (IllegalAccessException ignored) {
+
+            }
         }
 
         if (!changes.isEmpty()) {
             AuditLogDetailInfo header = new AuditLogDetailInfo();
             header.setEntityName(entity.getClass().getSimpleName());
-            header.setEntityId(auditable.getId() + "");
+            header.setEntityId(getEntityId(entity));
             header.setAction("UPDATE");
             header.setTimestamp(LocalDateTime.now());
             header.setUsername("system");
@@ -106,7 +107,9 @@ public class AuditingEntityListener {
                 detail.setOldValue(String.valueOf(val));
                 detail.setNewValue(null);
                 details.add(detail);
-            } catch (IllegalAccessException ignored) {}
+            } catch (IllegalAccessException ignored) {
+
+            }
         }
 
         if (!details.isEmpty()) {

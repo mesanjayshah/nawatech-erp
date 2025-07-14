@@ -47,7 +47,7 @@ public class SecurityConfig {
             "/login/**", "/register/**", "/index", "/2fa", "/api/rate-limited",
             "/verifyEmail/**", "/password-reset/**", "/resend-verification-token",
             "/forgot-password/**", "/forgot-password-token",
-            "/assets/**", "/vendors/**", "/api/verify"
+            "/assets/**", "/vendors/**", "/token/verify"
     };
 
     @Bean

@@ -2,6 +2,7 @@ package io.nawatech.erp.logs.audit;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.event.TransactionalEventListener;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
@@ -13,7 +14,7 @@ public class AuditLogEventListener {
 
     private final AuditLogDetailInfoRepository repository;
 
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     public void handleAuditLogEvent(AuditLogEvent event) {
         System.out.println("🔍 Is transaction active? " + TransactionSynchronizationManager.isActualTransactionActive());

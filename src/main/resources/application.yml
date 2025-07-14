@@ -41,7 +41,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: messanjayshah31@gmail.com
-    password: dbhsjqniwtlcwvgt
+    password: vipjglfkigsgkaib
     protocol: smtp
     properties:
       mail:
@@ -54,6 +54,8 @@ spring:
   thymeleaf:
     mode: HTML
     cache: false
+support:
+  email: messanjayshah31@gmail.com
 
 #logging:
 #  level:
