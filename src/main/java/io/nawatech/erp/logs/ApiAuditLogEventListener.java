@@ -1,4 +1,4 @@
-package io.nawatech.erp.logs.audit;
+package io.nawatech.erp.logs;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,25 +6,22 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.event.TransactionalEventListener;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.transaction.event.TransactionPhase;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class AuditLogEventListener {
+public class ApiAuditLogEventListener {
 
-    private final AuditLogDetailInfoRepository repository;
+    private final AuditLogRepository auditLogRepository;
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
-    public void handleAuditLogEvent(AuditLogEvent event) {
-
-        log.info("🔍 Is transaction active? " + TransactionSynchronizationManager.isActualTransactionActive());
-        var logs = event.getLogs();
+    public void handleApiAuditLogEvent(AuditLogEvent event) {
+        var logs = event.logs();
         if (!logs.isEmpty()) {
-            log.info("✅ Persisting " + logs.size() + " logs in AFTER_COMMIT");
-            repository.saveAll(logs);
+            log.info("✅ Persisting {} API audit logs in AFTER_COMMIT", logs.size());
+            auditLogRepository.saveAll(logs);
         }
     }
 }

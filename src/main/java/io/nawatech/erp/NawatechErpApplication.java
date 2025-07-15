@@ -9,13 +9,14 @@ import io.nawatech.erp.tenant.role.RoleRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.util.Set;
 
+@EnableAsync
 @SpringBootApplication
 @EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 public class NawatechErpApplication implements CommandLineRunner {

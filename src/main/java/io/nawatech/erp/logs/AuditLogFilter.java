@@ -4,6 +4,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -11,6 +12,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+@Slf4j
 @Component
 public class AuditLogFilter extends OncePerRequestFilter {
 
@@ -23,7 +25,6 @@ public class AuditLogFilter extends OncePerRequestFilter {
 
         String uri = request.getRequestURI();
 
-        // ✅ Skip audit logging for static resources, but still proceed with the filter chain
         if (uri.matches(".*\\.(css|js|ico|png|jpg|svg|woff2?)$") ||
                 uri.startsWith("/erp/assets/") ||
                 uri.startsWith("/erp/vendors/") ||
@@ -50,6 +51,10 @@ public class AuditLogFilter extends OncePerRequestFilter {
         log.setStatusCode(response.getStatus());
         log.setResponseTimeMs(duration);
 
-        auditLogService.saveAuditLog(log);
+        try {
+            auditLogService.publishApiAuditLog(log);
+        } catch (Exception e) {
+//            log.info("❌ Failed to publish audit log event: {}", e.getMessage(), e);
+        }
     }
 }

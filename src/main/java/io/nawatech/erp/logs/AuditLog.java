@@ -1,5 +1,6 @@
 package io.nawatech.erp.logs;
 
+import io.nawatech.erp.admin.Admin;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,14 +19,20 @@ public class AuditLog {
     @Enumerated(EnumType.STRING)
     private AuditEventType eventType;
 
-    private String principal;
+    private String principal; // email or subject ID
+    private String idpName;   // optional: e.g., "Okta", "Google", "Azure"
+
     private String httpMethod;
     private String requestUri;
     private String ipAddress;
     private LocalDateTime requestTime;
     private String userAgent;
+    private String details;
     private int statusCode;
     private long responseTimeMs;
 
-    // getters & setters
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "admin_id")
+    private Admin user;
+
 }
