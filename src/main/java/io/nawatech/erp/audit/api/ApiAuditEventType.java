@@ -1,6 +1,6 @@
-package io.nawatech.erp.logs;
+package io.nawatech.erp.audit.api;
 
-public enum AuditEventType {
+public enum ApiAuditEventType {
     LOGIN_SUCCESS,
     TOKEN_REFRESH,
     DATA_MODIFY,

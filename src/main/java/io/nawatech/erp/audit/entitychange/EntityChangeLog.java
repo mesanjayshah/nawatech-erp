@@ -1,4 +1,4 @@
-package io.nawatech.erp.logs.audit;
+package io.nawatech.erp.audit.entitychange;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
-public class AuditLogDetailInfo {
+public class EntityChangeLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,28 +19,28 @@ public class AuditLogDetailInfo {
 
     private String entityName;
     private String entityId;
-    private String action;
+    private String action; // CREATE, UPDATE, DELETE
     private LocalDateTime timestamp;
     private String username;
     private String ipAddress;
 
-    @OneToMany(mappedBy = "auditLogDetailInfo", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AuditLogDetail> details;
+    @OneToMany(mappedBy = "entityChangeLog", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EntityChangeDetail> details;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof AuditLogDetailInfo)) return false;
-        AuditLogDetailInfo that = (AuditLogDetailInfo) o;
+        if (!(o instanceof EntityChangeLog that)) return false;
         return Objects.equals(entityName, that.entityName) &&
                 Objects.equals(entityId, that.entityId) &&
                 Objects.equals(action, that.action) &&
                 Objects.equals(username, that.username) &&
-                Objects.equals(ipAddress, that.ipAddress);
+                Objects.equals(ipAddress, that.ipAddress) &&
+                Objects.equals(timestamp, that.timestamp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(entityName, entityId, action, username, ipAddress);
+        return Objects.hash(entityName, entityId, action, username, ipAddress, timestamp);
     }
 }

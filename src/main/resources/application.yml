@@ -21,7 +21,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
 
   security:
     oauth2:
@@ -60,3 +60,7 @@ support:
 #logging:
 #  level:
 #    org.springframework.security: DEBUG
+audit:
+  enabled: true
+  api-enabled: true
+  entity-change-enabled: true

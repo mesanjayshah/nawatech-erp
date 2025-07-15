@@ -1,7 +1,7 @@
 package io.nawatech.erp.product;
 
-import io.nawatech.erp.logs.audit.AuditableEntity;
-import io.nawatech.erp.logs.audit.AuditingEntityListener;
+import io.nawatech.erp.audit.entitychange.AuditableEntity;
+import io.nawatech.erp.audit.entitychange.EntityChangeEventListener;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Getter
 @Setter
 @DynamicUpdate
-@EntityListeners(AuditingEntityListener.class)
+@EntityListeners(EntityChangeEventListener.class)
 public class Product extends AuditableEntity {
 
     @Id

@@ -1,13 +1,13 @@
-package io.nawatech.erp.logs.audit;
+package io.nawatech.erp.audit.entitychange;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
-public class AuditLogDetail {
+@Entity
+public class EntityChangeDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +18,6 @@ public class AuditLogDetail {
     private String newValue;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "audit_log_detail_info_id")
-    private AuditLogDetailInfo auditLogDetailInfo;
+    @JoinColumn(name = "entity_change_log_id")
+    private EntityChangeLog entityChangeLog;
 }

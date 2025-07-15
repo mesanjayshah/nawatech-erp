@@ -1,4 +1,4 @@
-package io.nawatech.erp.logs;
+package io.nawatech.erp.audit.api;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,15 +13,15 @@ import org.springframework.transaction.event.TransactionPhase;
 @RequiredArgsConstructor
 public class ApiAuditLogEventListener {
 
-    private final AuditLogRepository auditLogRepository;
+    private final ApiAuditLogRepository repository;
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
-    public void handleApiAuditLogEvent(AuditLogEvent event) {
-        var logs = event.logs();
+    public void handle(ApiAuditLogEvent event) {
+        var logs = event.getLogs();
         if (!logs.isEmpty()) {
             log.info("✅ Persisting {} API audit logs in AFTER_COMMIT", logs.size());
-            auditLogRepository.saveAll(logs);
+            repository.saveAll(logs);
         }
     }
 }

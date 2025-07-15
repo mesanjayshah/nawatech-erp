@@ -18,6 +18,7 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
     Admin findByUsername(String username);
     Optional<Admin> findByEmail(String email);
     Optional<Admin> findByProviderAndProviderId(String provider, String providerId);
+    Optional<Admin> findByProviderId(String providerId);
 
     @Query("SELECT new io.nawatech.erp.utils.BasicDTO(u.id, u.name) FROM Admin u " +
             "WHERE u.isEnabled = true AND u.isAccountNonLocked = true ")

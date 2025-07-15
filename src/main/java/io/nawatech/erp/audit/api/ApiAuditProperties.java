@@ -1,4 +1,4 @@
-package io.nawatech.erp.logs;
+package io.nawatech.erp.audit.api;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,9 +9,6 @@ import org.springframework.stereotype.Component;
 @Setter
 @Component
 @ConfigurationProperties(prefix = "audit")
-public class AuditProperties {
-
+public class ApiAuditProperties {
     private boolean apiCallEnabled = true;
-    private boolean businessEventsEnabled = true;
-    private boolean fieldDiffsEnabled = true;
 }

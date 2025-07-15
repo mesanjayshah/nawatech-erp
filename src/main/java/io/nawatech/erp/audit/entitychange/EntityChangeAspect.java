@@ -1,6 +1,5 @@
-package io.nawatech.erp.logs.audit.aop;
+package io.nawatech.erp.audit.entitychange;
 
-import io.nawatech.erp.logs.audit.AuditLogFlusher;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
@@ -13,16 +12,16 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @RequiredArgsConstructor
-public class AuditLogAspect {
+public class EntityChangeAspect {
 
     private final ApplicationEventPublisher publisher;
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Around("@annotation(io.nawatech.erp.logs.audit.aop.TrackBusinessAudit)")
-    public Object auditAround(ProceedingJoinPoint joinPoint) throws Throwable {
-        AuditLogFlusher.register(publisher);
+    @Around("@annotation(io.nawatech.erp.audit.entitychange.TrackEntityChange)")
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+        EntityChangeFlusher.register(publisher);
         Object result = joinPoint.proceed();
         entityManager.flush();
         return result;

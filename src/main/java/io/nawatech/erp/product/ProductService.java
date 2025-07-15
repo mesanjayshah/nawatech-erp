@@ -1,9 +1,6 @@
 package io.nawatech.erp.product;
 
-import io.nawatech.erp.logs.AuditLogService;
-import io.nawatech.erp.logs.AuditProperties;
-import io.nawatech.erp.logs.audit.AuditLogDetailInfoRepository;
-import io.nawatech.erp.logs.audit.aop.TrackBusinessAudit;
+import io.nawatech.erp.audit.entitychange.TrackEntityChange;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -15,14 +12,11 @@ import org.springframework.stereotype.Service;
 public class ProductService {
 
     private final ProductRepository productRepository;
-    private final AuditLogService auditLogService;
-    private final AuditLogDetailInfoRepository auditLogDetailInfoRepository;
-    private final AuditProperties auditProperties;
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    @TrackBusinessAudit
+    @TrackEntityChange
     @Transactional
     public Product saveUpdate(Product productInput) {
         Product product;
@@ -91,7 +85,7 @@ public class ProductService {
         return productRepository.findByDeletedFalse();
     }
 
-    @TrackBusinessAudit
+    @TrackEntityChange
     @Transactional
     public void deleteProductById(Long id) {
         Product product = productRepository.findById(id)

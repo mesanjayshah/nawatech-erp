@@ -34,7 +34,7 @@ public class ProductController {
         return "product/create";
     }
 
-    @PreAuthorize("hasPermission(null, 'create')")
+    @PreAuthorize("hasPermission(null, 'product:create')")
     @PostMapping("/create")
     public void saveProduct(@ModelAttribute Product product) {
         productService.saveUpdate(product);
@@ -47,7 +47,7 @@ public class ProductController {
         return "product/edit";
     }
 
-    @PreAuthorize("hasPermission(null, 'update')")
+    @PreAuthorize("hasPermission(null, 'product:update')")
     @PutMapping("/edit/")
     public void updateProduct(@ModelAttribute Product product) {
         productService.saveUpdate(product);

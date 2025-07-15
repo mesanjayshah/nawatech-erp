@@ -101,7 +101,7 @@ public class AdminService implements UserDetailsService {
         tokenRepo.save(verificationToken);
 
         String subject = "Verify your email";
-        String verificationUrl = "http://localhost:8080/erp/api/verify?token=" + token;
+        String verificationUrl = "http://localhost:8080/erp/token/verify?token=" + token;
         String body = "Click the link to verify your account: " + verificationUrl;
 
         emailService.sendSimpleMail(user.getEmail(), subject, body);

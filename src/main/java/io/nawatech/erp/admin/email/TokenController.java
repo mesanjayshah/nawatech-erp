@@ -24,6 +24,7 @@ public class TokenController {
 
     @GetMapping("/verify")
     public ResponseEntity<Void> verifyEmail(@RequestParam String token, HttpServletResponse response) throws IOException {
+
         VerificationToken verificationToken = tokenRepo.findByToken(token)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid token"));
 
@@ -37,7 +38,7 @@ public class TokenController {
         userRepo.save(user);
         tokenRepo.delete(verificationToken);
 
-        response.sendRedirect("/login?success=Email verified successfully");
+        response.sendRedirect("/erp/login?success=Email verified successfully");
         return ResponseEntity.ok().build();
     }
 }

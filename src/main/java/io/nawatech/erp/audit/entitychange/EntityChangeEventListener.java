@@ -1,4 +1,4 @@
-package io.nawatech.erp.logs.audit;
+package io.nawatech.erp.audit.entitychange;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,25 +6,20 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.event.TransactionalEventListener;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.transaction.event.TransactionPhase;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class AuditLogEventListener {
+public class EntityChangeEventListener {
 
-    private final AuditLogDetailInfoRepository repository;
+    private final EntityChangeLogRepository repository;
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
-    public void handleAuditLogEvent(AuditLogEvent event) {
-
-        log.info("🔍 Is transaction active? " + TransactionSynchronizationManager.isActualTransactionActive());
+    public void handleEvent(EntityChangeEvent event) {
         var logs = event.getLogs();
-        if (!logs.isEmpty()) {
-            log.info("✅ Persisting " + logs.size() + " logs in AFTER_COMMIT");
-            repository.saveAll(logs);
-        }
+        log.info("✅ Persisting {} entity change logs AFTER_COMMIT", logs.size());
+        repository.saveAll(logs);
     }
 }

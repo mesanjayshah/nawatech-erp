@@ -19,37 +19,18 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
 
     @Override
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
+        if (authentication == null || !authentication.isAuthenticated()) return false;
+        if (!(permission instanceof String permissionStr) || permissionStr.isBlank()) return false;
 
-        log.debug("Authentication: {}", authentication);
-        log.debug("Checking permission {} for target {}", permission, targetDomainObject);
-
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return false;
-        }
-
-        // ✅ Skip permission checks for static or framework-related requests
-        if (targetDomainObject == null || permission == null) {
-            return true;
-        }
-
-        if (!(permission instanceof String)) {
-            return false;
-        }
-
-        return permissionService.hasPermission(authentication, targetDomainObject, permission.toString());
+        log.debug("Checking permission '{}' for '{}'", permissionStr, targetDomainObject);
+        return permissionService.hasPermission(authentication, targetDomainObject, permissionStr);
     }
 
     @Override
-    public boolean hasPermission(Authentication auth, Serializable targetId, String targetType, Object permission) {
-        // Allow nulls to skip unnecessary checks
-        if (targetId == null || targetType == null || permission == null) {
-            return true;
-        }
+    public boolean hasPermission(Authentication authentication, Serializable targetId, String targetType, Object permission) {
+        if (authentication == null || !authentication.isAuthenticated()) return false;
+        if (!(permission instanceof String permissionStr) || permissionStr.isBlank()) return false;
 
-        if (auth == null || !auth.isAuthenticated()) {
-            return false;
-        }
-
-        return permissionService.hasPermission(auth, targetType, String.valueOf(permission));
+        return permissionService.hasPermission(authentication, targetType, permissionStr);
     }
 }

@@ -1,4 +1,4 @@
-package io.nawatech.erp.logs;
+package io.nawatech.erp.audit.api;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -16,16 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class AuditLogCustomRepositoryImpl implements AuditLogCustomRepository {
+public class ApiAuditLogCustomRepositoryImpl implements ApiAuditLogCustomRepository {
 
     @PersistenceContext
     private EntityManager em;
 
     @Override
-    public Page<AuditLog> search(AuditLogSearchRequest req) {
+    public Page<ApiAuditLog> search(ApiAuditLogSearchRequest req) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<AuditLog> cq = cb.createQuery(AuditLog.class);
-        Root<AuditLog> root = cq.from(AuditLog.class);
+        CriteriaQuery<ApiAuditLog> cq = cb.createQuery(ApiAuditLog.class);
+        Root<ApiAuditLog> root = cq.from(ApiAuditLog.class);
 
         List<Predicate> predicates = new ArrayList<>();
 
@@ -44,18 +44,17 @@ public class AuditLogCustomRepositoryImpl implements AuditLogCustomRepository {
         cq.where(predicates.toArray(new Predicate[0]));
         cq.orderBy(cb.desc(root.get("requestTime")));
 
-        TypedQuery<AuditLog> query = em.createQuery(cq);
+        TypedQuery<ApiAuditLog> query = em.createQuery(cq);
         query.setFirstResult(req.getPage() * req.getSize());
         query.setMaxResults(req.getSize());
 
-        List<AuditLog> logs = query.getResultList();
+        List<ApiAuditLog> logs = query.getResultList();
 
         CriteriaQuery<Long> countQuery = cb.createQuery(Long.class);
-        Root<AuditLog> countRoot = countQuery.from(AuditLog.class);
+        Root<ApiAuditLog> countRoot = countQuery.from(ApiAuditLog.class);
         countQuery.select(cb.count(countRoot)).where(predicates.toArray(new Predicate[0]));
         Long count = em.createQuery(countQuery).getSingleResult();
 
         return new PageImpl<>(logs, PageRequest.of(req.getPage(), req.getSize()), count);
     }
 }
-

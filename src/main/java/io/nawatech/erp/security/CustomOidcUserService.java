@@ -1,8 +1,8 @@
 package io.nawatech.erp.security;
 
-import io.nawatech.erp.logs.AuditEventType;
-import io.nawatech.erp.logs.AuditLog;
-import io.nawatech.erp.logs.AuditLogService;
+import io.nawatech.erp.audit.api.ApiAuditEventType;
+import io.nawatech.erp.audit.api.ApiAuditLog;
+import io.nawatech.erp.audit.api.ApiAuditLogService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import io.nawatech.erp.admin.Admin;
@@ -37,7 +37,7 @@ public class CustomOidcUserService extends OidcUserService {
     @Autowired
     private HttpServletRequest request;
     @Autowired
-    private AuditLogService auditLogService;
+    private ApiAuditLogService auditLogService;
 
 /*    private final AdminService userService;
     private final AdminRepository userRepository;
@@ -105,8 +105,8 @@ public class CustomOidcUserService extends OidcUserService {
         userRepository.save(user);
 
         // ✅ Log login event
-        AuditLog log = new AuditLog();
-        log.setEventType(AuditEventType.LOGIN_SUCCESS);
+        ApiAuditLog log = new ApiAuditLog();
+        log.setEventType(ApiAuditEventType.LOGIN_SUCCESS);
         log.setPrincipal(email);
         log.setHttpMethod(request.getMethod());
         log.setRequestUri(request.getRequestURI());
@@ -134,6 +134,8 @@ public class CustomOidcUserService extends OidcUserService {
                 );
             }
         }
+
+        System.out.println("authorities  >>> " + authorities);
 
         // 🔁 Return new DefaultOidcUser with updated authorities
         return new DefaultOidcUser(authorities, oidcUser.getIdToken(), oidcUser.getUserInfo());
