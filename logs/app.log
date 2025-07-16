@@ -64,3 +64,7 @@
 2025-07-16 14:48:11 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
 2025-07-16 14:48:21 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
 2025-07-16 14:48:23 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 13.152 seconds (process running for 14.352)
+2025-07-16 14:56:06 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.7 with PID 40140 (C:\Users\SanjayShah\IdeaProjects\nawatech-erp\build\classes\java\main started by SanjayShah in C:\Users\SanjayShah\IdeaProjects\nawatech-erp)
+2025-07-16 14:56:06 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-16 14:56:08 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-16 14:56:09 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 2.858 seconds (process running for 480.22)
