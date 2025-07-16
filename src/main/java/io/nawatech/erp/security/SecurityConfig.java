@@ -103,6 +103,9 @@ public class SecurityConfig {
                         .userInfoEndpoint(userInfo -> userInfo.oidcUserService(oidcUserService()))
                         .defaultSuccessUrl("/", true)
                 )
+                .exceptionHandling(e -> e
+                        .accessDeniedPage("/error/403")
+                )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login")

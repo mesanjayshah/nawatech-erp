@@ -362,3 +362,117 @@
 2025-07-15 15:07:28 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
 2025-07-15 15:07:28 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 1.953 seconds (process running for 339.432)
 2025-07-15 15:07:35 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah31@gmail.com' permissions = [dashboard:read, product:read]
+2025-07-15 20:26:49 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 40321 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 20:26:49 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 20:26:59 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-15 20:27:01 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 12.339 seconds (process running for 13.268)
+2025-07-15 20:28:27 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 40522 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 20:28:27 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 20:28:34 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-15 20:28:36 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 9.083 seconds (process running for 9.693)
+2025-07-15 20:43:18 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah31@gmail.com' permissions = [dashboard:read, product:read]
+2025-07-15 20:45:23 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 40522 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 20:45:23 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 20:46:43 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 40522 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 20:46:43 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 20:46:44 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-15 20:46:45 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 2.549 seconds (process running for 1099.342)
+2025-07-15 20:47:50 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah31@gmail.com' permissions = [dashboard:read, product:read]
+2025-07-15 20:47:50 WARN  i.n.e.s.p.PermissionServiceImpl - Access denied. 'messanjayshah31@gmail.com' missing permission 'product:create'
+2025-07-15 20:47:51 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah31@gmail.com' permissions = [dashboard:read, product:read]
+2025-07-15 20:47:51 WARN  i.n.e.s.p.PermissionServiceImpl - Access denied. 'messanjayshah31@gmail.com' missing permission 'product:create'
+2025-07-15 21:02:45 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 40522 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 21:02:45 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 21:02:47 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-15 21:02:47 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 2.241 seconds (process running for 2047.884)
+2025-07-15 21:13:33 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 40522 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 21:13:33 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 21:13:35 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-15 21:13:35 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 2.448 seconds (process running for 2695.962)
+2025-07-15 21:14:24 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 40522 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 21:14:24 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 21:14:26 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-15 21:14:26 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 1.854 seconds (process running for 2746.786)
+2025-07-15 21:14:29 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah31@gmail.com' permissions = [dashboard:read, product:read]
+2025-07-15 21:14:29 WARN  i.n.e.s.p.PermissionServiceImpl - Access denied. 'messanjayshah31@gmail.com' missing permission 'product:create'
+2025-07-15 21:14:31 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah31@gmail.com' permissions = [dashboard:read, product:read]
+2025-07-15 21:14:31 WARN  i.n.e.s.p.PermissionServiceImpl - Access denied. 'messanjayshah31@gmail.com' missing permission 'product:create'
+2025-07-15 21:14:42 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah31@gmail.com' permissions = [dashboard:read, product:read]
+2025-07-15 21:14:42 WARN  i.n.e.s.p.PermissionServiceImpl - Access denied. 'messanjayshah31@gmail.com' missing permission 'product:create'
+2025-07-15 21:14:49 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah31@gmail.com' permissions = [dashboard:read, product:read]
+2025-07-15 21:15:03 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 42308 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 21:15:03 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 21:15:13 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-15 21:15:15 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 12.14 seconds (process running for 12.995)
+2025-07-15 21:16:19 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah31@gmail.com' permissions = [dashboard:read, product:read]
+2025-07-15 21:19:04 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:delete, product:create, product:read]
+2025-07-15 21:19:14 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:delete, product:create, product:read]
+2025-07-15 21:19:26 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:delete, product:create, product:read]
+2025-07-15 21:19:39 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:create, product:delete, product:read]
+2025-07-15 21:19:46 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 42308 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 21:19:46 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 21:19:48 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-15 21:19:48 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 2.085 seconds (process running for 286.556)
+2025-07-15 21:19:49 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:delete, product:create, product:read]
+2025-07-15 21:19:55 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:delete, product:create, product:read]
+2025-07-15 21:20:24 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:delete, product:create, product:read]
+2025-07-15 21:22:14 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:delete, product:create, product:read]
+2025-07-15 21:22:18 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:create, product:delete, product:read]
+2025-07-15 21:22:25 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:create, product:delete, product:read]
+2025-07-15 21:22:40 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 42308 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 21:22:40 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 21:22:41 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-15 21:22:42 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 2.151 seconds (process running for 460.313)
+2025-07-15 21:22:45 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:create, product:delete, product:read]
+2025-07-15 21:22:50 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:create, product:delete, product:read]
+2025-07-15 21:22:57 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:create, product:delete, product:read]
+2025-07-15 21:36:19 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 43468 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 21:36:19 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 21:36:29 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-15 21:36:30 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 12.228 seconds (process running for 13.031)
+2025-07-15 21:50:25 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:delete, product:create, product:read]
+2025-07-15 21:50:51 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:create, product:delete, product:read]
+2025-07-15 21:51:30 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:delete, product:create, product:read]
+2025-07-15 21:51:40 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:delete, product:create, product:read]
+2025-07-15 21:52:07 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:create, product:delete, product:read]
+2025-07-15 21:52:12 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:create, product:delete, product:read]
+2025-07-15 21:52:20 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:delete, product:create, product:read]
+2025-07-15 21:52:25 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:delete, product:create, product:read]
+2025-07-15 21:54:17 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:create, product:delete, product:read]
+2025-07-15 21:54:19 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:delete, product:create, product:read]
+2025-07-15 21:54:24 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:delete, product:create, product:read]
+2025-07-15 22:17:51 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 43468 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 22:17:51 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 22:17:53 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-15 22:17:53 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 2.066 seconds (process running for 2495.675)
+2025-07-15 22:17:59 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:create, product:delete, product:read]
+2025-07-15 22:32:58 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:create, product:delete, product:read]
+2025-07-15 22:33:00 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 43468 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 22:33:00 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 22:33:01 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-15 22:33:02 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 2.249 seconds (process running for 3304.399)
+2025-07-15 22:33:09 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:delete, product:create, product:read]
+2025-07-15 22:33:12 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:create, product:delete, product:read]
+2025-07-15 22:33:14 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:delete, product:create, product:read]
+2025-07-15 22:33:17 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:create, product:delete, product:read]
+2025-07-15 22:33:19 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:create, product:delete, product:read]
+2025-07-15 22:33:21 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:create, product:delete, product:read]
+2025-07-15 22:33:29 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:delete, product:create, product:read]
+2025-07-15 22:33:55 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 43468 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 22:33:55 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 22:33:56 INFO  i.n.erp.security.SecurityConfig - SecurityFilterChain
+2025-07-15 22:33:57 INFO  i.n.erp.NawatechErpApplication - Started NawatechErpApplication in 2.172 seconds (process running for 3359.412)
+2025-07-15 22:33:58 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:create, product:delete, product:read]
+2025-07-15 22:34:10 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:create, product:delete, product:read]
+2025-07-15 22:34:14 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:delete, product:create, product:read]
+2025-07-15 22:34:29 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:delete, product:create, product:read]
+2025-07-15 22:34:34 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:create, product:delete, product:read]
+2025-07-15 22:36:08 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:delete, product:create, product:read]
+2025-07-15 22:36:12 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:delete, product:create, product:read]
+2025-07-15 22:37:43 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:delete, product:create, product:read]
+2025-07-15 22:37:49 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, dashboard:read, user:write, product:delete, product:create, product:read]
+2025-07-15 22:37:54 INFO  i.n.e.s.p.PermissionServiceImpl - User 'messanjayshah@gmail.com' permissions = [product:update, user:write, dashboard:read, product:create, product:delete, product:read]
+2025-07-15 22:42:18 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 43468 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 22:42:18 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 22:43:53 INFO  i.n.erp.NawatechErpApplication - Starting NawatechErpApplication using Java 21.0.6 with PID 46094 (/Users/sanjayshah/IdeaProjects/nawatech-erp/build/classes/java/main started by sanjayshah in /Users/sanjayshah/IdeaProjects/nawatech-erp)
+2025-07-15 22:43:53 INFO  i.n.erp.NawatechErpApplication - No active profile set, falling back to 1 default profile: "default"

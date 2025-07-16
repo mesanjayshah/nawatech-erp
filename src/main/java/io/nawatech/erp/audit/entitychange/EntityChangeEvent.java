@@ -5,14 +5,14 @@ import org.springframework.context.ApplicationEvent;
 import java.util.Set;
 
 public class EntityChangeEvent extends ApplicationEvent {
-    private final Set<EntityChangeLog> logs;
+    private final Set<EntityChangeDetailInfo> logs;
 
-    public EntityChangeEvent(Object source, Set<EntityChangeLog> logs) {
+    public EntityChangeEvent(Object source, Set<EntityChangeDetailInfo> logs) {
         super(source);
         this.logs = logs;
     }
 
-    public Set<EntityChangeLog> getLogs() {
+    public Set<EntityChangeDetailInfo> getLogs() {
         return logs;
     }
 }

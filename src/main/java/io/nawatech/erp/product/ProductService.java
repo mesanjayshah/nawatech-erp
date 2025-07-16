@@ -22,6 +22,7 @@ public class ProductService {
         Product product;
 
         if (productInput.getId() == null || productInput.getId() == 0L) {
+
             product = productRepository.save(productInput);
         } else {
             product = entityManager.find(Product.class, productInput.getId());

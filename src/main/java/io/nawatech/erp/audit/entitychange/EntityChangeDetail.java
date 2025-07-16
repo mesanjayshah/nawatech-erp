@@ -19,5 +19,5 @@ public class EntityChangeDetail {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "entity_change_log_id")
-    private EntityChangeLog entityChangeLog;
+    private EntityChangeDetailInfo entityChangeDetailInfo;
 }

@@ -1,6 +1,7 @@
 package io.nawatech.erp.audit.entitychange;
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
-public class EntityChangeLog {
+public class EntityChangeDetailInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,13 +25,13 @@ public class EntityChangeLog {
     private String username;
     private String ipAddress;
 
-    @OneToMany(mappedBy = "entityChangeLog", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "entityChangeDetailInfo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EntityChangeDetail> details;
 
-    @Override
+/*    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof EntityChangeLog that)) return false;
+        if (!(o instanceof EntityChangeDetailInfo that)) return false;
         return Objects.equals(entityName, that.entityName) &&
                 Objects.equals(entityId, that.entityId) &&
                 Objects.equals(action, that.action) &&
@@ -42,5 +43,5 @@ public class EntityChangeLog {
     @Override
     public int hashCode() {
         return Objects.hash(entityName, entityId, action, username, ipAddress, timestamp);
-    }
+    }*/
 }
