@@ -1,6 +1,7 @@
 package io.nawatech.erp.security;
 
 
+import io.nawatech.erp.mtenant.TenantContext;
 import io.nawatech.erp.security.permission.CustomPermissionEvaluator;
 import io.nawatech.erp.security.permission.PermissionService;
 import jakarta.servlet.Filter;
@@ -37,6 +38,11 @@ public class SecurityConfig {
     @Bean
     public OidcUserService oidcUserService() {
         return new CustomOidcUserService();
+    }
+
+    @Bean
+    public CustomOAuth2UserService customOAuth2UserService() {
+        return new CustomOAuth2UserService();
     }
 
     @Bean
@@ -77,7 +83,7 @@ public class SecurityConfig {
     };
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http, UserDetailsService userDetailsService) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http, UserDetailsService userDetailsService, CustomOAuth2UserService customOAuth2UserService) throws Exception {
         log.info("SecurityFilterChain");
         http
                 .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
@@ -100,7 +106,9 @@ public class SecurityConfig {
                 )
                 .oauth2Login(oauth -> oauth
                         .loginPage("/login")
-                        .userInfoEndpoint(userInfo -> userInfo.oidcUserService(oidcUserService()))
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .oidcUserService(oidcUserService())
+                                .userService(customOAuth2UserService))
                         .defaultSuccessUrl("/", true)
                 )
                 .logout(logout -> logout
@@ -109,5 +117,19 @@ public class SecurityConfig {
                         .permitAll());
 
         return http.build();
+    }
+
+    @Bean
+    public FilterRegistrationBean<Filter> tenantContextCleanupFilter() {
+        FilterRegistrationBean<Filter> registration = new FilterRegistrationBean<>();
+        registration.setFilter((request, response, chain) -> {
+            try {
+                chain.doFilter(request, response);
+            } finally {
+                TenantContext.clear();
+            }
+        });
+        registration.setOrder(Ordered.LOWEST_PRECEDENCE);
+        return registration;
     }
 }

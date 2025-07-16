@@ -5,6 +5,8 @@ server:
   compression:
     enabled: true
 spring:
+  main:
+    allow-circular-references: true
   web:
     resources:
       cache:
