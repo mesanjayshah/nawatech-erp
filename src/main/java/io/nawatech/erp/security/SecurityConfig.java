@@ -111,6 +111,9 @@ public class SecurityConfig {
                                 .userService(customOAuth2UserService))
                         .defaultSuccessUrl("/", true)
                 )
+                .exceptionHandling(e -> e
+                        .accessDeniedPage("/error/403")
+                )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login")
