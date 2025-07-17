@@ -1,6 +1,6 @@
 package io.nawatech.erp.utils;
 
-import io.nawatech.erp.admin.Admin;
+import io.nawatech.erp.master.admin.Admin;
 import io.nawatech.erp.utils.constants.UserTypes;
 import io.nawatech.erp.utils.payload.Response;
 import jakarta.servlet.http.HttpSession;

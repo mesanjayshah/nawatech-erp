@@ -1,11 +1,11 @@
 package io.nawatech.erp;
 
-import io.nawatech.erp.admin.Admin;
-import io.nawatech.erp.auditing.AuditAwareImpl;
-import io.nawatech.erp.tenant.role.Permission;
-import io.nawatech.erp.tenant.role.PermissionRepository;
-import io.nawatech.erp.tenant.role.Role;
-import io.nawatech.erp.tenant.role.RoleRepository;
+import io.nawatech.erp.master.admin.Admin;
+import io.nawatech.erp.domain.audit.auditing.AuditAwareImpl;
+import io.nawatech.erp.master.entity.PermissionTemplate;
+import io.nawatech.erp.master.entity.RoleTemplate;
+import io.nawatech.erp.master.repository.PermissionTemplateRepository;
+import io.nawatech.erp.master.repository.RoleTemplateRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,10 +21,6 @@ import java.util.Set;
 @EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 public class NawatechErpApplication implements CommandLineRunner {
 
-    public NawatechErpApplication(RoleRepository roleRepository, PermissionRepository permissionRepository) {
-        this.roleRepository = roleRepository;
-        this.permissionRepository = permissionRepository;
-    }
 
     public static void main(String[] args) {
 		SpringApplication.run(NawatechErpApplication.class, args);
@@ -35,29 +31,35 @@ public class NawatechErpApplication implements CommandLineRunner {
 		return new AuditAwareImpl();
 	}
 
-	private final RoleRepository roleRepository;
-	private final PermissionRepository permissionRepository;
+    private final RoleTemplateRepository roleTemplateRepository;
+    private final PermissionTemplateRepository permissionTemplateRepository;
 
-	@Override
+    public NawatechErpApplication(RoleTemplateRepository roleTemplateRepository, PermissionTemplateRepository permissionTemplateRepository) {
+        this.roleTemplateRepository = roleTemplateRepository;
+        this.permissionTemplateRepository = permissionTemplateRepository;
+    }
+
+    @Override
 	public void run(String... args) {
-        if (permissionRepository.count() == 0 && roleRepository.count() == 0) {
-            Permission readPermission = permissionRepository.save(new Permission("dashboard:read"));
-            Permission writePermission = permissionRepository.save(new Permission("user:write"));
-            Permission readProduct = permissionRepository.save(new Permission("product:read"));
-            Permission createProduct = permissionRepository.save(new Permission("product:create"));
-            Permission updateProduct = permissionRepository.save(new Permission("product:update"));
-            Permission deleteProduct = permissionRepository.save(new Permission("product:delete"));
+        if (permissionTemplateRepository.count() == 0 && roleTemplateRepository.count() == 0) {
+            PermissionTemplate readPermission = permissionTemplateRepository.save(new PermissionTemplate("dashboard:read"));
+            PermissionTemplate writePermission = permissionTemplateRepository.save(new PermissionTemplate("user:write"));
+            PermissionTemplate readProduct = permissionTemplateRepository.save(new PermissionTemplate("product:read"));
+            PermissionTemplate createProduct = permissionTemplateRepository.save(new PermissionTemplate("product:create"));
+            PermissionTemplate updateProduct = permissionTemplateRepository.save(new PermissionTemplate("product:update"));
+            PermissionTemplate deleteProduct = permissionTemplateRepository.save(new PermissionTemplate("product:delete"));
 
             // Create roles and assign permissions
-            Role adminRole = new Role();
+            RoleTemplate adminRole = new RoleTemplate();
             adminRole.setName("ROLE_ADMIN");
-            adminRole.setPermissions(Set.of(readPermission, writePermission, readProduct, createProduct, updateProduct, deleteProduct));
-            roleRepository.save(adminRole);
+            adminRole.setPermissionTemplates(Set.of(readPermission, writePermission, readProduct, createProduct, updateProduct,
+                    deleteProduct));
+            roleTemplateRepository.save(adminRole);
 
-            Role userRole = new Role();
+            RoleTemplate userRole = new RoleTemplate();
             userRole.setName("ROLE_USER");
-            userRole.setPermissions(Set.of(readPermission, readProduct));
-            roleRepository.save(userRole);
+            userRole.setPermissionTemplates(Set.of(readPermission, readProduct));
+            roleTemplateRepository.save(userRole);
         }
 	}
 

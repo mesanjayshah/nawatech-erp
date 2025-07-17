@@ -1,19 +1,16 @@
 package io.nawatech.erp.config;
 
-import io.nawatech.erp.mtenant.TenantContext;
-import io.nawatech.erp.security.permission.CustomPermissionEvaluator;
-import jakarta.servlet.Filter;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import io.nawatech.erp.master.security.permission.CustomPermissionEvaluator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
 import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 
-import io.nawatech.erp.security.permission.PermissionService;
+import io.nawatech.erp.master.security.permission.PermissionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.PermissionEvaluator;
+
 
 @Configuration
 @EnableMethodSecurity
@@ -33,4 +30,6 @@ public class MethodSecurityConfig {
     public PermissionEvaluator permissionEvaluator() {
         return new CustomPermissionEvaluator(permissionService);
     }
+
+
 }

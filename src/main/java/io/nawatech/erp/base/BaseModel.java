@@ -2,7 +2,7 @@ package io.nawatech.erp.base;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.nawatech.erp.admin.Admin;
+import io.nawatech.erp.master.admin.Admin;
 import io.nawatech.erp.utils.Strings;
 import jakarta.persistence.*;
 import lombok.Getter;
