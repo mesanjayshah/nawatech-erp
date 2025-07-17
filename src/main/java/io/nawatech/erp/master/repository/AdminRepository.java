@@ -1,5 +1,6 @@
-package io.nawatech.erp.master.admin;
+package io.nawatech.erp.master.repository;
 
+import io.nawatech.erp.master.entity.Admin;
 import jakarta.transaction.Transactional;
 import io.nawatech.erp.utils.BasicDTO;
 import org.springframework.data.jpa.repository.JpaRepository;

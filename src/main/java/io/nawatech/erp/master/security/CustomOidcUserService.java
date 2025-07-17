@@ -1,18 +1,18 @@
 package io.nawatech.erp.master.security;
 
-import io.nawatech.erp.domain.audit.api.ApiAuditEventType;
-import io.nawatech.erp.domain.audit.api.ApiAuditLog;
-import io.nawatech.erp.domain.audit.api.ApiAuditLogService;
+import io.nawatech.erp.master.api.ApiAuditEventType;
+import io.nawatech.erp.master.entity.ApiAuditLog;
+import io.nawatech.erp.master.service.ApiAuditLogService;
+import io.nawatech.erp.master.entity.RoleTemplate;
 import io.nawatech.erp.master.multitenant.TenantContext;
 import io.nawatech.erp.master.multitenant.TenantProvisioningService;
+import io.nawatech.erp.master.repository.RoleTemplateRepository;
 import io.nawatech.erp.master.service.UserTenantMappingService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import io.nawatech.erp.master.admin.Admin;
-import io.nawatech.erp.master.admin.AdminRepository;
-import io.nawatech.erp.master.admin.AdminService;
-import io.nawatech.erp.domain.tenant.role.Role;
-import io.nawatech.erp.domain.tenant.role.RoleRepository;
+import io.nawatech.erp.master.entity.Admin;
+import io.nawatech.erp.master.repository.AdminRepository;
+import io.nawatech.erp.master.service.AdminService;
 import io.nawatech.erp.utils.util.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -36,7 +36,7 @@ public class CustomOidcUserService extends OidcUserService {
     @Autowired
     private AdminRepository userRepository;
     @Autowired
-    RoleRepository roleRepository;
+    RoleTemplateRepository roleRepository;
     @Autowired
     private HttpServletRequest request;
     @Autowired
@@ -71,7 +71,7 @@ public class CustomOidcUserService extends OidcUserService {
         String accessToken = userRequest.getAccessToken().getTokenValue();
 
         Optional<Admin> userOpt = userService.findByEmail(email);
-        Set<Role> defaultRole = Collections.singleton(
+        Set<RoleTemplate> defaultRole = Collections.singleton(
                 roleRepository.findByName("ROLE_USER")
                         .orElseThrow(() -> new RuntimeException("Default role not found"))
         );
@@ -133,14 +133,14 @@ public class CustomOidcUserService extends OidcUserService {
         // 🧠 Map permissions and roles to GrantedAuthorities
         Set<GrantedAuthority> authorities = new HashSet<>();
 
-        for (Role role : user.getRoles()) {
+        for (RoleTemplate role : user.getRoles()) {
             // Add role itself (e.g., ROLE_ADMIN)
             authorities.add(new SimpleGrantedAuthority(role.getName()));
 
             // Add role's permissions (e.g., product:create, user:update)
-            if (role.getPermissions() != null) {
+            if (role.getPermissionTemplates() != null) {
                 authorities.addAll(
-                        role.getPermissions().stream()
+                        role.getPermissionTemplates().stream()
                                 .map(permission -> new SimpleGrantedAuthority(permission.getName()))
                                 .collect(Collectors.toSet())
                 );

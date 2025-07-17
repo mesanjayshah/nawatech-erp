@@ -1,14 +1,16 @@
-package io.nawatech.erp.master.admin;
+package io.nawatech.erp.master.service;
 
+import io.nawatech.erp.master.entity.Admin;
 import io.nawatech.erp.master.entity.PermissionTemplate;
 import io.nawatech.erp.master.entity.RoleTemplate;
+import io.nawatech.erp.master.repository.AdminRepository;
 import io.nawatech.erp.master.repository.RoleTemplateRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import io.nawatech.erp.master.admin.email.EmailService;
-import io.nawatech.erp.master.admin.email.VerificationToken;
-import io.nawatech.erp.master.admin.email.VerificationTokenRepository;
+import io.nawatech.erp.master.entity.VerificationToken;
+import io.nawatech.erp.master.repository.VerificationTokenRepository;
 import io.nawatech.erp.utils.BasicDTO;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

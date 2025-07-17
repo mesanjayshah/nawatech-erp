@@ -1,5 +1,6 @@
-package io.nawatech.erp.master.admin.meta;
+package io.nawatech.erp.master.repository;
 
+import io.nawatech.erp.master.entity.DeviceMetadata;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

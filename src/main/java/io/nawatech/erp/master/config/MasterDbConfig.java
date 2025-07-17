@@ -14,9 +14,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@EntityScan("io.nawatech.erp.mtenant")
+@EntityScan("io.nawatech.erp.master.entity")
 @EnableJpaRepositories(
-        basePackages = "io.nawatech.erp.master",
+        basePackages = "io.nawatech.erp.master.repository",
         entityManagerFactoryRef = "masterEntityManagerFactory",
         transactionManagerRef = "masterTransactionManager"
 )
@@ -32,7 +32,7 @@ public class MasterDbConfig {
     public LocalContainerEntityManagerFactoryBean masterEntityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(masterDataSource);
-        em.setPackagesToScan("io.nawatech.erp.master");
+        em.setPackagesToScan("io.nawatech.erp.master.entity");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         return em;
     }

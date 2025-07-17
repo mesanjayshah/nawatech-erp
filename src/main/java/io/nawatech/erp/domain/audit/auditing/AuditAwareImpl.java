@@ -1,7 +1,7 @@
 package io.nawatech.erp.domain.audit.auditing;
 
-import io.nawatech.erp.master.admin.Admin;
-import io.nawatech.erp.master.admin.AdminService;
+import io.nawatech.erp.master.entity.Admin;
+import io.nawatech.erp.master.service.AdminService;
 import jakarta.annotation.Resource;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;

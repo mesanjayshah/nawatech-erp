@@ -1,4 +1,4 @@
-package io.nawatech.erp.domain.audit.api;
+package io.nawatech.erp.master.api;
 
 import lombok.Getter;
 import lombok.Setter;

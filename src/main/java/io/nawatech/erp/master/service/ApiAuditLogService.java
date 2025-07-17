@@ -1,5 +1,8 @@
-package io.nawatech.erp.domain.audit.api;
+package io.nawatech.erp.master.service;
 
+import io.nawatech.erp.master.api.ApiAuditLogEvent;
+import io.nawatech.erp.master.entity.ApiAuditLog;
+import io.nawatech.erp.master.repository.ApiAuditLogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.scheduling.annotation.Async;

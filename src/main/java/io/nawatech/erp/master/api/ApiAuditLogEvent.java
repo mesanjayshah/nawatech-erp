@@ -1,5 +1,6 @@
-package io.nawatech.erp.domain.audit.api;
+package io.nawatech.erp.master.api;
 
+import io.nawatech.erp.master.entity.ApiAuditLog;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 

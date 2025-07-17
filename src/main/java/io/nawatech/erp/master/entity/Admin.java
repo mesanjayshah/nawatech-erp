@@ -1,9 +1,7 @@
-package io.nawatech.erp.master.admin;
+package io.nawatech.erp.master.entity;
 
-import io.nawatech.erp.master.entity.RoleTemplate;
 import jakarta.persistence.*;
 import lombok.*;
-import io.nawatech.erp.domain.tenant.role.Role;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;

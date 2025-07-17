@@ -1,5 +1,6 @@
-package io.nawatech.erp.domain.audit.api;
+package io.nawatech.erp.master.api;
 
+import io.nawatech.erp.master.repository.ApiAuditLogRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

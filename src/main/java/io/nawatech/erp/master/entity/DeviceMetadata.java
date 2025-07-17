@@ -1,6 +1,5 @@
-package io.nawatech.erp.master.admin.meta;
+package io.nawatech.erp.master.entity;
 
-import io.nawatech.erp.master.admin.Admin;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;

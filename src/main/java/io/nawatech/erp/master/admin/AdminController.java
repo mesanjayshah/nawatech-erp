@@ -1,5 +1,7 @@
 package io.nawatech.erp.master.admin;
 
+import io.nawatech.erp.master.entity.Admin;
+import io.nawatech.erp.master.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

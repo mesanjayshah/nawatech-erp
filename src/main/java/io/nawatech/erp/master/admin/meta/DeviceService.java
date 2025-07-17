@@ -1,10 +1,12 @@
 package io.nawatech.erp.master.admin.meta;
 
 import com.google.common.base.Strings;
-import io.nawatech.erp.master.admin.Admin;
+import io.nawatech.erp.master.entity.Admin;
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CityResponse;
+import io.nawatech.erp.master.entity.DeviceMetadata;
+import io.nawatech.erp.master.repository.DeviceMetadataRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

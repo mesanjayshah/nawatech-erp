@@ -1,6 +1,6 @@
 package io.nawatech.erp;
 
-import io.nawatech.erp.master.admin.Admin;
+import io.nawatech.erp.master.entity.Admin;
 import io.nawatech.erp.domain.audit.auditing.AuditAwareImpl;
 import io.nawatech.erp.master.entity.PermissionTemplate;
 import io.nawatech.erp.master.entity.RoleTemplate;

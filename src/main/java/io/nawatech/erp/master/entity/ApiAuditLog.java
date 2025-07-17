@@ -1,6 +1,6 @@
-package io.nawatech.erp.domain.audit.api;
+package io.nawatech.erp.master.entity;
 
-import io.nawatech.erp.master.admin.Admin;
+import io.nawatech.erp.master.api.ApiAuditEventType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

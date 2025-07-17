@@ -1,4 +1,4 @@
-package io.nawatech.erp.master.multitenant.config;
+package io.nawatech.erp.domain.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,7 +14,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
-@EntityScan("io.nawatech.erp.product")
+@EntityScan("io.nawatech.erp.domain")
 @EnableJpaRepositories(
         basePackages = "io.nawatech.erp.domain",
         entityManagerFactoryRef = "tenantEntityManagerFactory",

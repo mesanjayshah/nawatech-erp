@@ -1,5 +1,6 @@
-package io.nawatech.erp.master.admin.email;
+package io.nawatech.erp.master.repository;
 
+import io.nawatech.erp.master.entity.VerificationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

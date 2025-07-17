@@ -1,8 +1,8 @@
 package io.nawatech.erp.master.security;
 
-import io.nawatech.erp.domain.audit.api.ApiAuditEventType;
-import io.nawatech.erp.domain.audit.api.ApiAuditLog;
-import io.nawatech.erp.domain.audit.api.ApiAuditLogService;
+import io.nawatech.erp.master.api.ApiAuditEventType;
+import io.nawatech.erp.master.entity.ApiAuditLog;
+import io.nawatech.erp.master.service.ApiAuditLogService;
 import io.nawatech.erp.master.multitenant.TenantContext;
 import io.nawatech.erp.master.multitenant.TenantProvisioningService;
 import io.nawatech.erp.master.service.UserTenantMappingService;

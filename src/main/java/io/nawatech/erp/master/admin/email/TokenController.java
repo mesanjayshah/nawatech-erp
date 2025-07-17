@@ -1,9 +1,11 @@
 package io.nawatech.erp.master.admin.email;
 
+import io.nawatech.erp.master.entity.VerificationToken;
+import io.nawatech.erp.master.repository.VerificationTokenRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import io.nawatech.erp.master.admin.Admin;
-import io.nawatech.erp.master.admin.AdminRepository;
+import io.nawatech.erp.master.entity.Admin;
+import io.nawatech.erp.master.repository.AdminRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

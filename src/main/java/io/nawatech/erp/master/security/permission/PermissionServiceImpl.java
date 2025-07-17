@@ -1,7 +1,7 @@
 package io.nawatech.erp.master.security.permission;
 
-import io.nawatech.erp.master.admin.Admin;
-import io.nawatech.erp.master.admin.AdminRepository;
+import io.nawatech.erp.master.entity.Admin;
+import io.nawatech.erp.master.repository.AdminRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -35,7 +35,7 @@ public class PermissionServiceImpl implements PermissionService {
         auditContext.setPermissionChecked(permission);
 
         Set<String> granted = admin.getRoles().stream()
-                .flatMap(role -> role.getPermissions().stream())
+                .flatMap(role -> role.getPermissionTemplates().stream())
                 .map(p -> p.getName().toLowerCase()) // normalize to lowercase
                 .collect(Collectors.toSet());
 
